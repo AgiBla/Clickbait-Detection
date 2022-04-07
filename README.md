@@ -1,20 +1,20 @@
 # Clickbait-Detection
 
-Este proyecto pretende utilizar el dataset [Webis-Clickbait-17](https://webis.de/data/webis-clickbait-17.html) para entrenar y evaluar un modelo BERT para detección de Tweets clickbait.
+Este proyecto utiliza el dataset [Webis-Clickbait-17](https://webis.de/data/webis-clickbait-17.html) para entrenar y evaluar un modelo BERT para la tarea de detección de clickbait en Tweets publicados por medios de comunicación.
 
 ## Resultados
-Utilizamos la versión *base* de BERT para esta tarea ([link](https://huggingface.co/bert-base-cased)), así como un modelo preentrenado para detección de noticias clickbait ([link](https://huggingface.co/elozano/bert-base-cased-clickbait-news)). Haremos *fine-tuning* utilizando la partición de entrenamiento del dataset, y analizaremos si utilizando un modelo ya preentrenado en otro dataset se pueden mejorar los resultados.
+Utilizamos la versión *base* de BERT para esta tarea, así como un modelo ya preentrenado en detección de noticias clickbait. Haremos *fine-tuning* en ambos modelos utilizando la partición de entrenamiento del dataset, y analizaremos si el utilizar un modelo ya preentrenado en otro dataset puede ser útil para mejorar los resultados.
 
-Evaluamos nuestros modelos utilizando el evaluador oficial y comparamos nuestros resultados con los mejores publicados en la competición (*goldfish*). Tabla completa [aquí](https://webis.de/events/clickbait-challenge/shared-task.html).
+Evaluamos nuestros modelos utilizando el evaluador oficial y comparamos nuestros resultados con los mejores resultados publicados en la competición (*goldfish*). Tabla completa de la competición [aquí](https://webis.de/events/clickbait-challenge/shared-task.html). Nuestros modelos son los siguientes:
 
-* `BERT`: BERT-Base-cased fine-tuneado en el dataset de Webis.
-* `BERT-CB-Org`: BERT-Base-cased-clickbait original sin fine-tunear en nuestro dataset.
-* `BERT-CB`: BERT-Base-cased-clickbait fine-tuneado en el dataset de Webis.
+* `BERT`: El modelo [BERT-Base-cased](https://huggingface.co/bert-base-cased) original fine-tuneado en el dataset de Webis.
+* `BERT-CB-Org`: El modelo [BERT-Base-cased-clickbait](https://huggingface.co/elozano/bert-base-cased-clickbait-news) original sin fine-tunear en nuestro dataset.
+* `BERT-CB`: El modelo [BERT-Base-cased-clickbait](https://huggingface.co/elozano/bert-base-cased-clickbait-news) fine-tuneado en el dataset de Webis.
 
 En la siguiente tabla se comparan nuestros resultados en la partición *test* del dataset.
 
 ```
-Dataset Stats
+Dataset Stats (TEST)
 Size: 18979
 Clickbait: 4515      % 23.79
 No-Clickbait: 14464  % 76.21

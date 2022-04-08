@@ -5,7 +5,7 @@ Este proyecto utiliza el dataset [Webis-Clickbait-17](https://webis.de/data/webi
 ## Resultados
 Utilizamos la versión *base* de BERT para esta tarea, así como un modelo ya preentrenado en detección de noticias clickbait. Haremos *fine-tuning* en ambos modelos utilizando la partición de entrenamiento del dataset, y analizaremos si el utilizar un modelo ya preentrenado en otro dataset puede ser útil para mejorar los resultados.
 
-Evaluamos nuestros modelos utilizando el evaluador oficial y comparamos nuestros resultados con los mejores resultados publicados en la competición (*goldfish*). Tabla completa de la competición [aquí](https://webis.de/events/clickbait-challenge/shared-task.html). Nuestros modelos son los siguientes:
+Evaluamos nuestros modelos utilizando el evaluador oficial y comparamos nuestros resultados con los mejores resultados publicados en la competición (*goldfish*) como representante del estado del arte. Tabla completa de la competición [aquí](https://webis.de/events/clickbait-challenge/shared-task.html). Nuestros modelos son los siguientes:
 
 * `BERT`: El modelo [BERT-Base-cased](https://huggingface.co/bert-base-cased) original fine-tuneado en el dataset de Webis.
 * `BERT-CB-Org`: El modelo [BERT-Base-cased-clickbait](https://huggingface.co/elozano/bert-base-cased-clickbait-news) original sin fine-tunear en nuestro dataset.
@@ -20,12 +20,12 @@ Clickbait: 4515      % 23.79
 No-Clickbait: 14464  % 76.21
 ```
 
-| Modelo | Accuracy	| Precision	| Recall | **F1 Score** |
+| Model | Accuracy	| Precision	| Recall | **F1 Score** |
 | -------- | -------- | -------- | -------- | ----------- |
 | *goldfish* | 0.876	| 0.739	| 0.742 | 0.741 |
-| BERT | 0,859 | 0,702 | 0,71 | 0,706 |
-| BERT-CB-Org | 0,773 | 0,623 | 0,113 | 0,191 |
-| BERT-CB | 0,864 | 0,786 | 0,587 | 0,672 |
+| BERT | 0,859 | 0.702 | 0.71 | 0.706 |
+| BERT-CB-Org | 0.773 | 0.623 | 0.113 | 0.191 |
+| BERT-CB | 0.864 | 0.786 | 0.587 | 0.672 |
 
 Puesto que únicamente hay dos clases, las métricas como la precisión no son muy fiables (clasificar todos los casos como *No-clickbait* daría una precisión del 76%). Por ese motivo utilizamos la métrica F1 para comparar resultados. Podemos ver cómo simplemente *fine-tuneando* un modelo BERT-Base podemos obtener unos resultados competitivos con aquellos publicados en la competición del 2017. Utilizar un modelo re-entrenado en otro dataset puede ser útil, pero en este caso no obtiene buenos resultados. *Fine-tunear* ese modelo mejora los resultados, pero se obtienen mejores resultados utilizando el modelo original.
 
